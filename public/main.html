@@ -1,11 +1,561 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inicio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde-whatzap: #007f00;
+            --terracota: #a83d2a;
+            --creme-fundo: #fbf7ee;
+            --turquesa: #00a896;
+            --turquesa-escuro: #007f72;
+            --texto-escuro: #4a2c24;
+            --borda-moldura: #c76b58;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--creme-fundo);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+
+        .nav-bar-elements {
+            background-color: var(--terracota);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-bar-elements nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .introducao {
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            padding: 40px 20px;
+        }
+
+        .btn-link-cardapio {
+            display: inline-block;
+            background-color: var(--turquesa);
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: background 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn-link-cardapio:hover {
+            background-color: var(--turquesa-escuro);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .nav-bar-elements ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-bar-elements a {
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        .secao-1,
+        .secao-2 {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .nav-bar-elements a:hover {
+            opacity: 0.8;
+        }
+
+        .destaques {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #e5d8c5;
+            padding: 30px 15px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .btn-contato {
+            margin: 30px;
+        }
+
+        .quem-somos {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f3ece0;
+            border-radius: 8px;
+            border: 2px dashed #e2d3be;
+        }
+
+        .quem-somos h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--terracota);
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .quem-somos h3 {
+            font-size: 1.1rem;
+            color: var(--turquesa-escuro);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .quem-somos p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #66524a;
+        }
+
+        .Produtos {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-produto {
+            background-color: #ffffff;
+            border: 3px solid var(--borda-moldura);
+            border-radius: 12px;
+            padding: 25px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(168, 61, 42, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .card-produto:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-produto h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--terracota);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .card-produto h3 {
+            font-size: 0.85rem;
+            color: #7a635a;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .card-produto a {
+            display: inline-block;
+            background-color: var(--turquesa);
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: background 0.3s ease;
+        }
+
+        .card-produto a:hover {
+            background-color: var(--turquesa-escuro);
+        }
+
+        .Contato {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card-section {
+            background-color: #ffffff;
+            border: 1px solid #e5d8c5;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+
+
+        .card-section p {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .card-section a {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--terracota);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        .oportunidades {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .oportunidades a {
+            display: inline-block;
+            background-color: var(--terracota);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .oportunidades a:hover {
+            background-color: var(--verde-whatzap);
+            transition: background 0.3s ease;
+        }
+
+        .Contato {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .card-section {
+            background-color: #ffffff;
+            border: 2px solid var(--borda-moldura);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 450px;
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(168, 61, 42, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(168, 61, 42, 0.18);
+        }
+
+        .card-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--terracota);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .card-section .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--texto-escuro);
+        }
+
+        .card-section .info-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--turquesa-escuro);
+        }
+
+        .btn-contato-card {
+            display: inline-block;
+            margin-top: 25px;
+            background-color: var(--turquesa);
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none !important;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 168, 150, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-contato-card:hover {
+            background-color: var(--turquesa-escuro);
+            transform: scale(1.03);
+            box-shadow: 0 6px 16px rgba(0, 168, 150, 0.4);
+        }
+
+        /* ESTILOS DO RODAPÉ */
+        footer {
+            background-color: var(--terracota);
+            color: #ffffff;
+            padding: 30px 5%;
+            margin-top: 60px;
+        }
+
+        .footer-principal {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+            padding-bottom: 20px;
+        }
+
+        .elementos-esquerda {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .elementos-esquerda h5 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+        }
+
+        .elementos-esquerda img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .elementos-direita ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .elementos-direita a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .elementos-direita a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Estilos convertidos da div Tailwind do componente final */
+        .footer-inferior {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(251, 247, 238, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-inferior {
+                flex-direction: row;
+            }
+        }
+
+        .copyright-text {
+            font-size: 0.75rem;
+            color: rgba(251, 247, 238, 0.6);
+        }
+
+        .link-pedido {
+            font-size: 0.75rem;
+            color: #ffffff;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .link-pedido:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <header class="nav-bar-elements">
+        <nav>
+            <a href="#"><img src="logo.png" alt="logo-icon" class="logo-icon"></a>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="introducao">
+        <h1>Marbouh</h1>
+        <h3>Bolos & Sabores Naturais</h3>
+        <p>Descubra o sabor autêntico dos nossos bolos artesanais, feitos com ingredientes selecionados.</p>
+    </div>
+
+    <div class="quem-somos" id="sobre">
+        <h1>Quem Somos</h1>
+        <h3>Chefe da Firma</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit corrupti nulla velit quisquam
+            similique inventore quibusdam beatae a voluptatibus facere architecto dolore sunt praesentium, modi expedita
+            quae, quo eum veritatis.
+        </p>
+    </div>
+
+        <div class="destaques">
+            <h2>Destaques!</h2>
+            <div class="secao-1">
+                <div class="Produtos">
+                    <div class="card-produto">
+                        <h2>Produto</h2>
+                        <h3>subtitulo - Filtragem de Produtos</h3>
+                        <a href="#">Detalhes</a>
+                    </div>
+                </div>
+                <div class="Produtos">
+                    <div class="card-produto">
+                        <h2>Produto</h2>
+                        <h3>subtitulo - Filtragem de Produtos</h3>
+                        <a href="#">Detalhes</a>
+                    </div>
+                </div>
+                <div class="Produtos">
+                    <div class="card-produto">
+                        <h2>Produto</h2>
+                        <h3>subtitulo - Filtragem de Produtos</h3>
+                        <a href="#">Detalhes</a>
+                    </div>
+                </div>
+            </div>
+            
+        <div class="secao-2">
+            <div class="Produtos">
+                <div class="card-produto">
+                    <h2>Produto</h2>
+                    <h3>subtitulo - Filtragem de Produtos</h3>
+                    <a href="#">Detalhes</a>
+                </div>
+            </div>
+            <div class="Produtos">
+                <div class="card-produto">
+                    <h2>Produto</h2>
+                    <h3>subtitulo - Filtragem de Produtos</h3>
+                    <a href="#">Detalhes</a>
+                </div>
+            </div>
+            <div class="Produtos">
+                <div class="card-produto">
+                    <h2>Produto</h2>
+                    <h3>subtitulo - Filtragem de Produtos</h3>
+                    <a href="#">Detalhes</a>
+                </div>
+            </div>
+        </div>
+        <a class="btn-link-cardapio" href="#">Veja o nosso Cardápio ➡</a>
+    </div>
+
+    <div class="Contato" id="contato">
+        <div class="card-section">
+            <h2>Entre em Contato</h2>
+
+            <div class="info-item">
+                <!-- Ícone de Localização -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                </svg>
+                <span>São Leopoldo, RS</span>
+            </div>
+
+            <div class="info-item">
+                <!-- Ícone de Telefone -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+                <span>+55 51 99547659</span>
+            </div>
+
+            <a href="https://wa.me/555199547659" target="_blank" class="btn-contato-card">Falar no WhatsApp →</a>
+        </div>
+    </div>
+
+    <div class="oportunidades">
+        <h1>Revenda Disponivel!</h1>
+        <h3>Faça parte da noss marca e revendas os nosso produtos feitos com carinho.</h3>
+        <a class="btn-contato" href="#">Fale Conosco</a>
+    </div>
+
+    <footer>
+        <div class="footer-principal">
+            <div class="elementos-esquerda">
+                <img src="logo.png" alt="logo-icon">
+                <h5>Marbouh</h5>
+                <a href="#"><img src="./img/Instagram.png" alt="logo-Instagram"></a>
+                <a href="#"><img src="./img/Whatsapp.png" alt="logo-whatsap"></a>
+            </div>
+            <div class="elementos-direita">
+                <nav>
+                    <ul>
+                        <li><a href="#sobre">Quem Somos</a></li>
+                        <li><a href="#">Produtos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#">Oportunidades</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="footer-inferior">
+            <p class="copyright-text">© 2026 Marbouh. Todos os direitos reservados.</p>
+            <a href="https://medianeiradoceria.meucardapio.ai/" target="_blank" rel="noopener noreferrer"
+                class="link-pedido">Faça seu pedido online →</a>
+        </div>
+    </footer>
 </body>
+
 </html>
